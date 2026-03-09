@@ -25,7 +25,7 @@ COMMENT     \#.*
 
 int main()
 {
-    FILE *file = fopen("./input_data.hammad", "r");
+    FILE *file = fopen("./a1/input_data.hammad", "r");
     if (!file) {
         perror("Error opening file");
         return 1;
