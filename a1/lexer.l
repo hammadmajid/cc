@@ -25,8 +25,14 @@ COMMENT     \#.*
 
 int main()
 {
-    printf("Enter input:\n");
+    FILE *file = fopen("./input_data.hammad", "r");
+    if (!file) {
+        perror("Error opening file");
+        return 1;
+    }
+    yyin = file;
     yylex();
+    fclose(file);
     return 0;
 }
 
