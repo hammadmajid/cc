@@ -1,0 +1,30 @@
+; Question 2: Relocatable Assembly Code
+; Address Offsets from Base Address 0
+;
+; Memory Layout:
+; Offset 0-1 (2 bytes):   mov al, [b]       
+; Offset 2-4 (3 bytes):   sub al, [c]       
+; Offset 5-6 (2 bytes):   mov [a], al       
+; Offset 7:               variable b (1 byte)
+; Offset 8:               variable c (1 byte)
+; Offset 9:               variable a (1 byte)
+
+; Instruction: mov al, [b]
+; Opcode: 0x8a (2 bytes)
+; Bytes: 8a 07  (8a = mov r8,r/m8; 07 = displacement to b at offset 7)
+; Address: 0x0000 (2 bytes)
+
+; Instruction: sub al, [c]
+; Opcode: 0x2a (3 bytes)
+; Bytes: 2a 06 00  (2a = sub r8,r/m8; 06 = displacement to c at offset 8)
+; Address: 0x0002 (3 bytes)
+
+; Instruction: mov [a], al
+; Opcode: 0x88 (2 bytes)
+; Bytes: 88 07  (88 = mov r/m8,r8; 07 = displacement to a at offset 9)
+; Address: 0x0005 (2 bytes)
+
+; Variables:
+; b at offset 0x0007 = 08 (value 8)
+; c at offset 0x0008 = 02 (value 2)
+; a at offset 0x0009 = 00 (value 0)

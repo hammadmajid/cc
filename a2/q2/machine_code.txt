@@ -1,0 +1,45 @@
+; Question 2: Machine Code with Absolute Addresses
+; Base Address: 5000 (0x1388)
+;
+; Memory Layout with Absolute Addresses:
+; Address 5000-5001 (2 bytes):   mov al, [b]       
+; Address 5002-5004 (3 bytes):   sub al, [c]       
+; Address 5005-5006 (2 bytes):   mov [a], al       
+; Address 5007 (1 byte):          variable b = 8
+; Address 5008 (1 byte):          variable c = 2
+; Address 5009 (1 byte):          variable a = 0
+
+MACHINE CODE:
+
+Instruction 1: mov al, [b]
+  Memory Address: 5000 (0x1388)
+  Bytes: 8a 07
+  Length: 2 bytes
+
+Instruction 2: sub al, [c]  
+  Memory Address: 5002 (0x138A)
+  Bytes: 2a 06
+  Length: 3 bytes
+
+Instruction 3: mov [a], al
+  Memory Address: 5005 (0x138D)
+  Bytes: 88 07
+  Length: 2 bytes
+
+DATA SECTION:
+  
+Variable b (value = 8):
+  Memory Address: 5007 (0x138F)
+  Byte: 08
+
+Variable c (value = 2):
+  Memory Address: 5008 (0x1390)
+  Byte: 02
+
+Variable a (value = 0, result location):
+  Memory Address: 5009 (0x1391)
+  Byte: 00
+
+COMPLETE MEMORY IMAGE (after execution, a = 6):
+5000: 8a 07 | 2a 06 | 88 07 | 08 | 02 | 06
+      mov    | sub    | mov    | b  | c  | a(result)
